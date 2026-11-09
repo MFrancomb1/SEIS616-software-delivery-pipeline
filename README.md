@@ -1,7 +1,5 @@
 # SEIS616-software-delivery-pipeline
 
-# SEIS 616 — Software Delivery Pipeline with Manual Approval
-
 The `ManualApproval` stage is placed **after Build and before Deploy**. The Deploy stage cannot run for that execution until an authorized reviewer approves the pending action. Rejecting the action stops that pipeline execution.
 
 ## CloudFormation modifications
