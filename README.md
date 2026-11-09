@@ -48,19 +48,19 @@ When creating the CloudFormation stack, supply:
 Created the modified CloudFormation stack. The stack reached **`CREATE_COMPLETE`**. An SNS subscription confirmation email arrived at the address supplied through `ApprovalEmail`.
 
 
-### 3. Automated build and test
+### 2. Automated build and test
 
 The initial build failed because Flask 2.0.3 was incompatible with the newer Werkzeug package. Added `Werkzeug==2.0.3` to the application repository's `requirements.txt`.
 
 The build then encountered a Node.js 14 / LESS compiler compatibility issue. Updated `buildspec.yml` to install a compatible LESS version (`less@4.1.3`). The next pipeline execution advanced to the manual approval stage, meaning application test passed and the pipeline advanced beyond Build after the dependency fixes.
 
-### 4. Manual approval and email notification
+### 3. Manual approval and email notification
 
 The pipeline entered the **`ManualApproval`** stage, with the **`ReviewAndApprove`** action waiting for approval. The **Deploy** stage had not run.
 
 Amazon SNS delivered an email headed **CodePipeline manual approval**, stating that the approval action was waiting for a response.
 
-### 5. Approval
+### 4. Approval
 
 Opened the CodePipeline review dialog, selected **Approve**
 
@@ -68,6 +68,6 @@ After approval, CodeDeploy began a deployment to the two EC2 instances in the Au
 
 The approval allowed the pipeline to proceed to the Deploy stage.
 
-### 6. Final deployment verification
+### 5. Final deployment verification
 
 CodeDeploy reports success for both instances.
